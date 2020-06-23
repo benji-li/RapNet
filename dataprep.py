@@ -15,10 +15,19 @@ def word_embeddings(text):
     int_to_vocab = {x:char_counts[x] for x in range(len(char_counts))}
     return vocab_to_int,int_to_vocab
 
+def punctuation_handler(text):
+    punctuation = {'.':'<Period>',',':'<Comma>','"':'<QuotationMark>',';':'<Semicolon>','!':'<Exclamation>','?':'<Question>',
+           '(':'<LeftParentheses>',')':'<RightParentheses>','-':'<Dash>','\n':'<NewLine>'}
+    for k in punctuation.keys():
+        text = text.replace(k,' '+punctuation[k]+' ')
+    return text
+
 data_dir = './data/lyrics.txt'
 text = load_data(data_dir)
 
-print (len(text))
-
-v,i = word_embeddings(text)
-print(i)
+print ('Length of dataset: {}'.format(len(text)))
+text = punctuation_handler(text)
+print(text[:100])
+text=text.lower()
+text=text.split()
+v_to_i,i_to_v = word_embeddings(text)
