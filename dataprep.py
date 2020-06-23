@@ -1,6 +1,8 @@
 import numpy as np
 import os
 from collections import Counter
+import torch
+from torch.utils.data import TensorDataset, DataLoader
 
 def load_data(path):
     text_file = os.path.join(path)
@@ -21,6 +23,18 @@ def punctuation_handler(text):
     for k in punctuation.keys():
         text = text.replace(k,' '+punctuation[k]+' ')
     return text
+
+def data_batcher(text_nums,seq_length,batch_size):
+    features=np.array()
+    targets=np.array()
+    for x in range(0,len(text_nums)-seq_length):
+        np.append(features,text_nums[x:x+seq_length])
+        np.append(targets,text_nums[x+seq_length+1])
+    features = torch.from_numpy(features)
+    targets = torch.from_numpy(features)
+    data = TensorDataset(features,targets)
+    data_loader = DataLoader(data,batch_size=batch_size,shuffle=True)
+    return data_loader
 
 data_dir = './data/lyrics.txt'
 text = load_data(data_dir)
