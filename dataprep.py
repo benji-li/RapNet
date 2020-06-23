@@ -28,6 +28,11 @@ text = load_data(data_dir)
 print ('Length of dataset: {}'.format(len(text)))
 text = punctuation_handler(text)
 print(text[:100])
+
 text=text.lower()
 text=text.split()
+
 v_to_i,i_to_v = word_embeddings(text)
+
+text_nums = [v_to_i[word] for word in text]
+print(text_nums[:100])
