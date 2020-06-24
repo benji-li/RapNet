@@ -25,9 +25,9 @@ class rnn(nn.Module):
         out = output[:,-1]
         return out,hidden
     
-    def init_hidden_weights(self,batch_size):
+    def init_hidden_weights(self,batch_size,gpu_avail):
         weight=next(self.parameters()).data
-        if torch.cuda_is_available():
+        if gpu_avail:
             hidden = (weight.new(self.n_layers, batch_size, self.hidden_dim).zero_().cuda(),
             weight.new(self.n_layers, batch_size, self.hidden_dim).zero_().cuda())
         else:
