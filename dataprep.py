@@ -36,17 +36,18 @@ def data_batcher(text_nums,seq_length,batch_size):
     data_loader = DataLoader(data,batch_size=batch_size,shuffle=True)
     return data_loader
 
-data_dir = './data/lyrics.txt'
-text = load_data(data_dir)
+if __name__ == '__main__':
+    data_dir = './data/lyrics.txt'
+    text = load_data(data_dir)
 
-print ('Length of dataset: {}'.format(len(text)))
-text = punctuation_handler(text)
-print(text[:100])
+    print ('Length of dataset: {}'.format(len(text)))
+    text = punctuation_handler(text)
+    print(text[:100])
 
-text=text.lower()
-text=text.split()
+    text=text.lower()
+    text=text.split()
 
-v_to_i,i_to_v = word_embeddings(text)
+    v_to_i,i_to_v = word_embeddings(text)
 
-text_nums = [v_to_i[word] for word in text]
-print(text_nums[:100])
+    text_nums = [v_to_i[word] for word in text]
+    print(text_nums[:100])
