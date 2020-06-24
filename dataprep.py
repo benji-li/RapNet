@@ -25,13 +25,13 @@ def punctuation_handler(text):
     return text
 
 def data_batcher(text_nums,seq_length,batch_size):
-    features=np.array()
-    targets=np.array()
+    features=[]
+    targets=[]
     for x in range(0,len(text_nums)-seq_length):
-        np.append(features,text_nums[x:x+seq_length])
-        np.append(targets,text_nums[x+seq_length+1])
-    features = torch.from_numpy(features)
-    targets = torch.from_numpy(features)
+        features.append(text_nums[x:x+seq_length])
+        targets.append(text_nums[x+seq_length])
+    features = torch.from_numpy(np.array(features))
+    targets = torch.from_numpy(np.array(targets))
     data = TensorDataset(features,targets)
     data_loader = DataLoader(data,batch_size=batch_size,shuffle=True)
     return data_loader
