@@ -20,13 +20,12 @@ def word_embeddings(text):
 def punctuation_handler(text,for_gen=False):
     punctuation = {'.':'<period>',',':'<comma>','"':'<quotationmark>',';':'<semicolon>','!':'<exclamation>','?':'<question>',
            '(':'<leftparentheses>',')':'<rightparentheses>','-':'<dash>','\n':'<newline>'}
-    if for_gen==False:
-        for k in punctuation.items():
-            if for_gen==False:
-                text = text.replace(k[0],' '+k[1]+' ')
-            else:
-                text = text.replace(k[1],k[0])
-        return text
+    for k in punctuation.items():
+        if for_gen==False:
+            text = text.replace(k[0],' '+k[1]+' ')
+        else:
+            text = text.replace(k[1],k[0])
+    return text
 
 def data_batcher(text_nums,seq_length,batch_size):
     features=[]
