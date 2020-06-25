@@ -25,6 +25,7 @@ def fb_props(rnn,optimizer,criterion,inp,target,hidden,gpu_avail):
 def training_loop(rnn,batch_size,optimizer,criterion,n_epochs,gpu_avail):
     losses=[]
     rnn.train()
+    t_start = time.time()
     for epoch in range(n_epochs):
         hidden = rnn.init_hidden_weights(batch_size,gpu_avail)
         for batch, (inputs,targets) in enumerate(train_loader,1):
@@ -41,9 +42,8 @@ def training_loop(rnn,batch_size,optimizer,criterion,n_epochs,gpu_avail):
                     epoch+1,
                     n_epochs,
                     np.average(losses),
-                    (batch/n_batches)*((epoch+1)/n_epochs)*100,
+                    (epoch*n_batches+batch)/(n_epochs*n_batches)*100,
                     (t_end-t_start)/60))
-                t_start = time.time()
                 losses=[]
     return rnn
 
@@ -86,6 +86,5 @@ criterion = nn.CrossEntropyLoss()
 
 trained_model = training_loop(net,batch_size,optimizer,criterion,epochs,gpu_avail)
 
-save_path = './saved_models'
-torch.save(trained_model.state_dict(),save_path)
+torch.save(trained_model.state_dict(),'trained_model.pt')
 print('model successfully trained and saved!')
