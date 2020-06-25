@@ -28,10 +28,10 @@ class rnn(nn.Module):
     def init_hidden_weights(self,batch_size,gpu_avail):
         weight=next(self.parameters()).data
         if gpu_avail:
-            hidden = (weight.new(self.n_layers, batch_size, self.hidden_dim).zero_().cuda(),
+            hidden = (weight.new(self.num_layers, batch_size, self.hidden_dim).zero_().cuda(),
             weight.new(self.n_layers, batch_size, self.hidden_dim).zero_().cuda())
         else:
-            hidden = (weight.new(self.n_layers, batch_size, self.hidden_dim).zero_(),
-            weight.new(self.n_layers, batch_size, self.hidden_dim).zero_())
+            hidden = (weight.new(self.num_layers, batch_size, self.hidden_dim).zero_(),
+            weight.new(self.num_layers, batch_size, self.hidden_dim).zero_())
         
         return hidden
