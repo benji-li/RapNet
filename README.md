@@ -3,7 +3,7 @@ Deep learning generated rap lyrics trained on a dataset of Kanye West's discogra
 that can generate lyrics upon provided a "primer" word as indicated by the user.
 
 ## Generated Samples:
-Here are some of my favourite bars out of the many I generated. If you don't think too hard, I guess they might almost make sense?
+Here are some of my favourite bars out of the many the network generated. I guess they almost make sense?
 ```
  you know the heart is the whole thing 
  you know i love that shit 
