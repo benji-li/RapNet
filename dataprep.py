@@ -17,12 +17,16 @@ def word_embeddings(text):
     int_to_vocab = {x:char_counts[x] for x in range(len(char_counts))}
     return vocab_to_int,int_to_vocab
 
-def punctuation_handler(text):
-    punctuation = {'.':'<Period>',',':'<Comma>','"':'<QuotationMark>',';':'<Semicolon>','!':'<Exclamation>','?':'<Question>',
-           '(':'<LeftParentheses>',')':'<RightParentheses>','-':'<Dash>','\n':'<NewLine>'}
-    for k in punctuation.keys():
-        text = text.replace(k,' '+punctuation[k]+' ')
-    return text
+def punctuation_handler(text,for_gen=False):
+    punctuation = {'.':'<period>',',':'<comma>','"':'<quotationmark>',';':'<semicolon>','!':'<exclamation>','?':'<question>',
+           '(':'<leftparentheses>',')':'<rightparentheses>','-':'<dash>','\n':'<newline>'}
+    if for_gen==False:
+        for k in punctuation.items():
+            if for_gen==False:
+                text = text.replace(k[0],' '+k[1]+' ')
+            else:
+                text = text.replace(k[1],k[0])
+        return text
 
 def data_batcher(text_nums,seq_length,batch_size):
     features=[]
