@@ -39,6 +39,15 @@ def data_batcher(text_nums,seq_length,batch_size):
     data_loader = DataLoader(data,batch_size=batch_size,shuffle=True)
     return data_loader
 
+def data_processor(dir):
+    text = load_data(dir)
+    text = punctuation_handler(text)
+    text = text.lower()
+    text = text.split()
+    v_to_i,i_to_v = word_embeddings(text)
+    text_nums = [v_to_i[word] for word in text]
+    return v_to_i,i_to_v,text_nums
+
 if __name__ == '__main__':
     data_dir = './data/lyrics.txt'
     text = load_data(data_dir)

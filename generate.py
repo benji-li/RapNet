@@ -5,11 +5,7 @@ import dataprep
 import numpy as np
 
 data_dir = './data/lyrics.txt'
-text = dataprep.load_data(data_dir)
-text = dataprep.punctuation_handler(text)
-text = text.lower()
-text = text.split()
-v_to_i,i_to_v = dataprep.word_embeddings(text)
+v_to_i,i_to_v,text_nums = dataprep.data_processor(data_dir)
 
 epochs = 5
 vocab_size = output_size = len(v_to_i)

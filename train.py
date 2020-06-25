@@ -52,12 +52,7 @@ seq_length = 32
 batch_size = 128
 
 #prepping and loading the data
-text = dataprep.load_data(data_dir)
-text = dataprep.punctuation_handler(text)
-text = text.lower()
-text = text.split()
-v_to_i,i_to_v = dataprep.word_embeddings(text)
-text_nums = [v_to_i[word] for word in text]
+v_to_i,i_to_v,text_nums = dataprep.data_processor(data_dir)
 train_loader = dataprep.data_batcher(text_nums,seq_length,batch_size)
 
 #set some hyperparameters
