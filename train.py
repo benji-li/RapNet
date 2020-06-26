@@ -58,7 +58,7 @@ train_loader = dataprep.data_batcher(text_nums,seq_length,batch_size)
 #set some hyperparameters
 hypers = model.HyperParams(len(v_to_i),len(v_to_i))
 
-net = model.rnn(hypers.vocab_size,hypers.output_size,hypers.embedding_dim,hypers.hidden_dim,hypers.num_layers,hypers.dropout)
+net = model.Rnn(hypers.vocab_size,hypers.output_size,hypers.embedding_dim,hypers.hidden_dim,hypers.num_layers,hypers.dropout)
 print(net)
 
 #check for a gpu

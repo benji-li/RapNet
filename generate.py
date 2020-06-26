@@ -10,7 +10,7 @@ v_to_i,i_to_v,text_nums = dataprep.data_processor(data_dir)
 hypers = model.HyperParams(len(v_to_i),len(v_to_i))
 seq_length = 32
 
-trained_net = model.rnn(hypers.vocab_size,hypers.output_size,hypers.embedding_dim,hypers.hidden_dim,hypers.num_layers,hypers.dropout)
+trained_net = model.Rnn(hypers.vocab_size,hypers.output_size,hypers.embedding_dim,hypers.hidden_dim,hypers.num_layers,hypers.dropout)
 trained_net.load_state_dict(torch.load('./trained_model.pt'))
 trained_net.eval()
 

@@ -2,7 +2,7 @@ import torch.nn as nn
 import torch
 from dataclasses import dataclass
 
-class rnn(nn.Module):
+class Rnn(nn.Module):
     def __init__(self,vocab_size,output_size,embedding_dim,hidden_dim,num_layers,dropout):
         super(rnn,self).__init__()
         self.output_size = output_size
