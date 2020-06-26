@@ -7,20 +7,15 @@ import numpy as np
 data_dir = './data/lyrics.txt'
 v_to_i,i_to_v,text_nums = dataprep.data_processor(data_dir)
 
-epochs = 5
-vocab_size = output_size = len(v_to_i)
-embedding_dim = 256
-hidden_dim = 500
-num_layers = 2
-dropout = 0.5
+hypers = model.HyperParams(len(v_to_i),len(v_to_i))
 seq_length = 32
 
-trained_net = model.rnn(vocab_size,output_size,embedding_dim,hidden_dim,num_layers,dropout)
+trained_net = model.rnn(hypers.vocab_size,hypers.output_size,hypers.embedding_dim,hypers.hidden_dim,hypers.num_layers,hypers.dropout)
 trained_net.load_state_dict(torch.load('./trained_model.pt'))
 trained_net.eval()
 
 gen_length = 500
-start_word = "bruised"
+start_word = "wire"
 start_word_ind = v_to_i[start_word]
 generated = [start_word]
 
@@ -37,7 +32,7 @@ for x in range(gen_length):
     output, _ = trained_net.forward(init_seq,hidden)
     probs = F.softmax(output,dim=1).data
 
-    top_k = 5
+    top_k = 10
     probs,top_inds = probs.topk(top_k)
     top_inds = top_inds.numpy().squeeze()
     probs =  probs.numpy().squeeze()

@@ -1,5 +1,6 @@
 import torch.nn as nn
 import torch
+from dataclasses import dataclass
 
 class rnn(nn.Module):
     def __init__(self,vocab_size,output_size,embedding_dim,hidden_dim,num_layers,dropout):
@@ -35,3 +36,14 @@ class rnn(nn.Module):
             weight.new(self.num_layers, batch_size, self.hidden_dim).zero_())
         
         return hidden
+
+@dataclass
+class HyperParams:
+    output_size: int 
+    vocab_size: int
+    epochs: int = 5
+    learning_rate: int = 0.001
+    embedding_dim: int = 256
+    hidden_dim: int = 500
+    num_layers: int = 2
+    dropout: int = 0.5

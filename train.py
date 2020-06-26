@@ -56,15 +56,9 @@ v_to_i,i_to_v,text_nums = dataprep.data_processor(data_dir)
 train_loader = dataprep.data_batcher(text_nums,seq_length,batch_size)
 
 #set some hyperparameters
-epochs = 5
-learning_rate = 0.001
-vocab_size = output_size = len(v_to_i)
-embedding_dim = 256
-hidden_dim = 500
-num_layers = 2
-dropout = 0.5
+hypers = model.HyperParams(len(v_to_i),len(v_to_i))
 
-net = model.rnn(vocab_size,output_size,embedding_dim,hidden_dim,num_layers,dropout)
+net = model.rnn(hypers.vocab_size,hypers.output_size,hypers.embedding_dim,hypers.hidden_dim,hypers.num_layers,hypers.dropout)
 print(net)
 
 #check for a gpu
@@ -76,10 +70,10 @@ else:
     print('GPU not found, will train on CPU!')
     gpu_avail=False
 
-optimizer = optim.Adam(net.parameters(),lr=learning_rate)
+optimizer = optim.Adam(net.parameters(),lr=hypers.learning_rate)
 criterion = nn.CrossEntropyLoss()
 
-trained_model = training_loop(net,batch_size,optimizer,criterion,epochs,gpu_avail)
+trained_model = training_loop(net,batch_size,optimizer,criterion,hypers.epochs,gpu_avail)
 
 torch.save(trained_model.state_dict(),'trained_model.pt')
 print('model successfully trained and saved!')
