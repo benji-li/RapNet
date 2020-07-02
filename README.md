@@ -31,7 +31,9 @@ I recommend using [Conda](https://docs.conda.io/projects/conda/en/latest/user-gu
 
 Run train.py to instantiate and train a custom model, or simply run generate.py to try out the pretrained model in this repo.
 
-In terms of training a custom model, having an available GPU will speed up the training process substantially, otherwise a decent-performing model will take over an hour to train.
+In terms of training a custom model, simply set some hyperparameters in the HyperParams dataclass in model.py. 
+
+*NOTE: Having an available GPU will speed up the training process substantially, otherwise a decent-performing model will take over an hour to train.*
 
 ## Next Steps:
 * Implement a web scraper for data collection
