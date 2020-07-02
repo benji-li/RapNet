@@ -20,5 +20,6 @@ for song in data['songs']:
 filepath = "./data/"+artist_name+"_Lyrics.txt"
 
 f = open(filepath,'w')
-f.write(str(lyrics))
+for song in lyrics:
+    f.write(str(song))
 f.close()
