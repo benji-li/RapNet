@@ -2,7 +2,8 @@ import lyricsgenius as genius
 import json
 import os
 
-api = genius.Genius('4eMJoKWuTAyfxabfE_CZekpjNgp1JBTD86ULdSC3JfUGmHnLrz853VKif2pLMZdE')
+#Generate access token here: https://genius.com/api-clients
+api = genius.Genius('YOUR KEY HERE XXXXXXXX')
 
 artist_name = 'KendrickLamar'
 artist = api.search_artist(artist_name,max_songs=200)
