@@ -35,11 +35,9 @@ In terms of training a custom model, simply set some hyperparameters in the Hype
 
 *NOTE: Having an available GPU will speed up the training process substantially, otherwise a decent-performing model will take over an hour to train.*
 
+### Generate Your Own Dataset!
+Using genius_lyrics.py, one can easily create a dataset of lyrics from an artist of choice. Using the lyricsgenius wrapper for the [Genius API](https://docs.genius.com/), simply follow this [link](https://genius.com/api-clients) that will allow you to generate an access key. Then, simply specify an artist name and max_songs parameter to create your dataset!
+
 ## Next Steps:
-* Implement a web scraper for data collection
-* Train the network on a few other artists' discographies (curious to see what DrakeBot or DoomNet might produce)
-
-
-
-Shoutout to [Robbie Barrat](https://github.com/robbiebarrat) for the dataset and a similar project built with Keras a couple years ago.
+* Train the network on a few other artists' discographies (curious to see what DrakeNet or DoomBot might produce)
 
