@@ -38,6 +38,4 @@ In terms of training a custom model, simply set some hyperparameters in the Hype
 ### Generate Your Own Dataset!
 Using genius_lyrics.py, one can easily create a dataset of lyrics from an artist of choice. Using the lyricsgenius wrapper for the [Genius API](https://docs.genius.com/), simply follow this [link](https://genius.com/api-clients) that will allow you to generate an access key. Then, simply specify an artist name and max_songs parameter to create your dataset!
 
-## Next Steps:
-* Train the network on a few other artists' discographies (curious to see what DrakeNet or DoomBot might produce)
 
