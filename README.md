@@ -1,5 +1,5 @@
 # YeNet
-Deep learning generated rap lyrics trained on a dataset of Kanye West's discography. I used [PyTorch](pytorch.org) to create a word-level recurrent neural network utilizing Long Short-Term Memory [(LSTM)](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21) cells
+Deep learning generated rap lyrics trained on a dataset of any musician's discography. I used [PyTorch](pytorch.org) to create a word-level recurrent neural network utilizing Long Short-Term Memory [(LSTM)](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21) cells
 that can generate lyrics upon provided a "primer" word as indicated by the user.
 
 ## Generated Samples:
